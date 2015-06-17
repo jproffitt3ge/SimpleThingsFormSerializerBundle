@@ -15,7 +15,6 @@ namespace SimpleThings\FormSerializerBundle\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CollectionTypeExtension extends AbstractTypeExtension
 {
@@ -24,7 +23,7 @@ class CollectionTypeExtension extends AbstractTypeExtension
         // todo optimize (away)
         $builder->setAttribute(
             'serialize_collection_form',
-            $builder->getFormFactory()->create($options['type'])
+            $builder->getFormFactory()->create($options['type'], null, $options['options'])
         );
     }
 
@@ -33,4 +32,3 @@ class CollectionTypeExtension extends AbstractTypeExtension
         return 'collection';
     }
 }
-
